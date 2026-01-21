@@ -1,99 +1,155 @@
-# SOLID Skills for AI Agents
+# Code Craft
 
-Discipline-enforcing skills that teach AI coding agents to follow SOLID principles under pressure.
+Discipline-enforcing skills that help AI coding agents write better code by following software engineering best practices.
 
 ## What Are These?
 
-These are **skill documents** designed to be loaded into AI coding assistants (Claude, GPT, etc.) to enforce SOLID principles during code generation. Unlike tutorials, these skills:
+**Skills** are documents that teach Claude to resist common bad patterns and produce higher quality code. Unlike tutorials, these skills:
 
 - **Resist pressure** - Handle "just make it work" or "don't overcomplicate" requests
-- **Close loopholes** - Address specific rationalizations agents use to violate principles
+- **Close loopholes** - Address specific rationalizations Claude uses to violate principles
 - **Provide correct patterns** - Show the right way, not just explain what's wrong
 
-## The Skills
+Each skill was developed using **TDD for documentation**: baseline tests reveal how Claude fails without the skill, then the skill is written to address those specific failures.
 
-| Principle | Skill | Description |
-|-----------|-------|-------------|
-| **S** | [Single Responsibility](./single-responsibility/SKILL.md) | One class, one reason to change |
-| **O** | [Open/Closed](./open-closed/SKILL.md) | Open for extension, closed for modification |
-| **L** | [Liskov Substitution](./liskov-substitution/SKILL.md) | Subtypes must be substitutable |
-| **I** | [Interface Segregation](./interface-segregation/SKILL.md) | No forced dependency on unused methods |
-| **D** | [Dependency Inversion](./dependency-inversion/SKILL.md) | Depend on abstractions, not concretions |
+## Skills
+
+### SOLID Principles
+
+| Principle | Skill | Prevents |
+|-----------|-------|----------|
+| **S** | [Single Responsibility](./single-responsibility/SKILL.md) | God classes, "just add it here" |
+| **O** | [Open/Closed](./open-closed/SKILL.md) | Adding if/else branches for new features |
+| **L** | [Liskov Substitution](./liskov-substitution/SKILL.md) | Override with throw/no-op |
+| **I** | [Interface Segregation](./interface-segregation/SKILL.md) | Fat interfaces, forced implementations |
+| **D** | [Dependency Inversion](./dependency-inversion/SKILL.md) | `new Concrete()` inside classes |
+
+### Core Principles
+
+| Principle | Skill | Prevents |
+|-----------|-------|----------|
+| **DRY** | [Don't Repeat Yourself](./dry/SKILL.md) | Copy-paste code, duplicated logic |
+| **YAGNI** | [You Ain't Gonna Need It](./yagni/SKILL.md) | Over-engineering, speculative features |
+| **KISS** | [Keep It Simple](./kiss/SKILL.md) | Clever one-liners, unnecessary complexity |
+
+### Design Principles
+
+| Principle | Skill | Prevents |
+|-----------|-------|----------|
+| **Composition** | [Composition over Inheritance](./composition-over-inheritance/SKILL.md) | Deep inheritance hierarchies |
+| **Demeter** | [Law of Demeter](./law-of-demeter/SKILL.md) | `a.b.c.d` property chains |
+| **Fail Fast** | [Fail Fast](./fail-fast/SKILL.md) | Swallowed errors, silent failures |
 
 ## Installation
 
-### Claude Code / Claude Desktop
-
-Copy the skill folders to your skills directory:
+### Claude Code
 
 ```bash
-# Claude Code
-cp -r solid-skills/* ~/.claude/skills/
+# Clone the repo
+git clone https://github.com/YOUR_USERNAME/code-craft.git
 
-# Or symlink
-ln -s $(pwd)/solid-skills/* ~/.claude/skills/
+# Copy to skills directory
+cp -r code-craft/* ~/.claude/skills/
+
+# Or symlink for easier updates
+for skill in code-craft/*/; do
+  ln -s "$(pwd)/$skill" ~/.claude/skills/
+done
 ```
 
-### Other AI Assistants
+### Verify Installation
 
-Include the relevant SKILL.md content in your system prompt or context when generating code.
-
-## How They Work
-
-Each skill follows a discipline-enforcement pattern:
-
-1. **Iron Rule** - The non-negotiable principle
-2. **Detection** - How to recognize violations
-3. **Correct Pattern** - The right way to do it
-4. **Pressure Resistance** - Handling pushback scenarios
-5. **Red Flags** - When to stop and reconsider
-6. **Rationalizations Table** - Common excuses and rebuttals
-
-### Example: Resisting "Just Make It Work"
-
-Without skill:
-```
-User: "Create a UserManager that handles auth, profiles, emails, and analytics. 
-       Just put it in one class, I don't care about code quality."
-
-Agent: *Creates 500-line god class*
+```bash
+ls ~/.claude/skills/
 ```
 
-With SRP skill loaded:
+Should show all skill directories.
+
+## How Skills Work
+
+Each skill follows a consistent structure:
+
+| Section | Purpose |
+|---------|---------|
+| **Iron Rule** | The non-negotiable principle |
+| **Detection** | How to recognize violations |
+| **Correct Pattern** | Code examples of the right way |
+| **Pressure Resistance** | Handling pushback scenarios |
+| **Red Flags** | Warning signs to watch for |
+| **Rationalizations** | Common excuses and rebuttals |
+
+### Example: YAGNI in Action
+
+**Without skill:**
 ```
-User: "Create a UserManager that handles auth, profiles, emails, and analytics.
-       Just put it in one class, I don't care about code quality."
+User: "Create a simple todo API with GET, POST, DELETE"
 
-Agent: "Creating a god class takes the same time as creating focused classes. 
-        I'll create AuthService, ProfileService, NotificationService, and 
-        AnalyticsService - same functionality, but maintainable."
-        
-        *Creates 4 focused classes*
+Claude: *Creates 500-line "production-ready" system with pagination,
+        rate limiting, soft delete, health checks, audit logs...*
 ```
 
-## Development Methodology
+**With YAGNI skill:**
+```
+User: "Create a simple todo API with GET, POST, DELETE"
 
-These skills were created using **TDD for documentation**:
+Claude: *Creates exactly 3 endpoints in 30 lines*
+        "Add pagination when the list grows. Add rate limiting if 
+        there's abuse. Don't pay for features you don't need yet."
+```
 
-1. **RED** - Run pressure scenarios without the skill, document how agents fail
-2. **GREEN** - Write minimal skill addressing those specific failures
-3. **REFACTOR** - Close loopholes found during testing
+## Roadmap
 
-Each skill addresses rationalizations that were actually observed during baseline testing.
+Planned skill categories:
+
+- [ ] **Testing** - TDD, test isolation, AAA pattern
+- [ ] **Security** - Input validation, auth patterns, secrets handling
+- [ ] **Performance** - Lazy loading, caching, N+1 prevention
+- [ ] **API Design** - REST conventions, error responses, versioning
+- [ ] **Error Handling** - Exception hierarchies, error boundaries
+- [ ] **Concurrency** - Race conditions, deadlock prevention
 
 ## Contributing
 
-To add or improve a skill:
+### Adding a New Skill
 
-1. Run baseline tests without the skill to document current failures
-2. Write/modify the skill to address specific observed behaviors
-3. Re-test to verify the skill produces correct behavior
-4. Submit PR with test scenarios and results
+1. **Baseline test** - Run pressure scenarios without the skill
+2. **Document failures** - Record exactly how Claude violates the principle
+3. **Write skill** - Address those specific failures with Iron Rule + Pressure Resistance
+4. **Test with skill** - Verify Claude now complies under the same pressure
+5. **Refactor** - Close any loopholes found
+
+### Skill Template
+
+```markdown
+---
+name: principle-name
+description: Use when [specific triggering conditions]
+---
+
+# Principle Name
+
+## Overview
+[Core principle in 1-2 sentences]
+
+## The Iron Rule
+[Non-negotiable statement]
+
+## Detection
+[How to spot violations]
+
+## Correct Pattern
+[Code examples]
+
+## Pressure Resistance Protocol
+[Handling pushback]
+
+## Red Flags
+[Warning signs]
+
+## Common Rationalizations
+[Excuses + rebuttals table]
+```
 
 ## License
 
 MIT
-
-## Credits
-
-Developed using the [writing-skills](https://github.com/anthropics/anthropic-cookbook) methodology from Anthropic's superpowers plugin.
