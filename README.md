@@ -31,14 +31,63 @@ Each skill was developed using **TDD for documentation**: baseline tests reveal 
 | **DRY** | [Don't Repeat Yourself](./dry/SKILL.md) | Copy-paste code, duplicated logic |
 | **YAGNI** | [You Ain't Gonna Need It](./yagni/SKILL.md) | Over-engineering, speculative features |
 | **KISS** | [Keep It Simple](./kiss/SKILL.md) | Clever one-liners, unnecessary complexity |
-
-### Design Principles
-
-| Principle | Skill | Prevents |
-|-----------|-------|----------|
 | **Composition** | [Composition over Inheritance](./composition-over-inheritance/SKILL.md) | Deep inheritance hierarchies |
 | **Demeter** | [Law of Demeter](./law-of-demeter/SKILL.md) | `a.b.c.d` property chains |
 | **Fail Fast** | [Fail Fast](./fail-fast/SKILL.md) | Swallowed errors, silent failures |
+
+### Testing
+
+| Skill | Prevents |
+|-------|----------|
+| [TDD](./tdd/SKILL.md) | Tests as afterthought, untestable code |
+| [Test Isolation](./test-isolation/SKILL.md) | Flaky tests, shared state between tests |
+| [AAA Pattern](./aaa-pattern/SKILL.md) | Messy tests, unclear test structure |
+
+### Security
+
+| Skill | Prevents |
+|-------|----------|
+| [Input Validation](./input-validation/SKILL.md) | Injection attacks, invalid data |
+| [Secrets Handling](./secrets-handling/SKILL.md) | Hardcoded credentials, exposed secrets |
+| [Auth Patterns](./auth-patterns/SKILL.md) | Broken authentication, insecure sessions |
+
+### API Design
+
+| Skill | Prevents |
+|-------|----------|
+| [REST Conventions](./rest-conventions/SKILL.md) | Inconsistent endpoints, poor API design |
+| [Error Responses](./error-responses/SKILL.md) | Unhelpful errors, leaked internals |
+| [Idempotency](./idempotency/SKILL.md) | Duplicate operations, unsafe retries |
+| [API Versioning](./api-versioning/SKILL.md) | Breaking changes, version chaos |
+
+### Performance
+
+| Skill | Prevents |
+|-------|----------|
+| [N+1 Prevention](./n-plus-one-prevention/SKILL.md) | Database query explosions |
+| [Lazy Loading](./lazy-loading/SKILL.md) | Loading everything upfront, slow startup |
+| [Caching](./caching/SKILL.md) | Repeated expensive operations, cache bugs |
+
+### Code Quality
+
+| Skill | Prevents |
+|-------|----------|
+| [Separation of Concerns](./separation-of-concerns/SKILL.md) | Mixed responsibilities, tangled code |
+| [Encapsulation](./encapsulation/SKILL.md) | Exposed internals, broken abstractions |
+| [Immutability](./immutability/SKILL.md) | Mutation bugs, unexpected state changes |
+
+### Error Handling
+
+| Skill | Prevents |
+|-------|----------|
+| [Exception Hierarchies](./exception-hierarchies/SKILL.md) | Generic errors, poor error handling |
+| [Error Boundaries](./error-boundaries/SKILL.md) | Cascading failures, crashed UIs |
+
+### Concurrency
+
+| Skill | Prevents |
+|-------|----------|
+| [Race Conditions](./race-conditions/SKILL.md) | Data races, inconsistent state |
 
 ## Installation
 
@@ -46,7 +95,7 @@ Each skill was developed using **TDD for documentation**: baseline tests reveal 
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/code-craft.git
+git clone https://github.com/yanko-belov/code-craft.git
 
 # Copy to skills directory
 cp -r code-craft/* ~/.claude/skills/
@@ -97,16 +146,21 @@ Claude: *Creates exactly 3 endpoints in 30 lines*
         there's abuse. Don't pay for features you don't need yet."
 ```
 
-## Roadmap
+## Skill Categories
 
-Planned skill categories:
+| Category | Skills | Focus |
+|----------|--------|-------|
+| **SOLID** | 5 | Object-oriented design principles |
+| **Core** | 6 | Fundamental coding principles |
+| **Testing** | 3 | Test quality and structure |
+| **Security** | 3 | Secure coding practices |
+| **API Design** | 4 | RESTful API best practices |
+| **Performance** | 3 | Optimization patterns |
+| **Code Quality** | 3 | Clean code patterns |
+| **Error Handling** | 2 | Exception management |
+| **Concurrency** | 1 | Thread-safe patterns |
 
-- [ ] **Testing** - TDD, test isolation, AAA pattern
-- [ ] **Security** - Input validation, auth patterns, secrets handling
-- [ ] **Performance** - Lazy loading, caching, N+1 prevention
-- [ ] **API Design** - REST conventions, error responses, versioning
-- [ ] **Error Handling** - Exception hierarchies, error boundaries
-- [ ] **Concurrency** - Race conditions, deadlock prevention
+**Total: 30 skills**
 
 ## Contributing
 
@@ -149,6 +203,13 @@ description: Use when [specific triggering conditions]
 ## Common Rationalizations
 [Excuses + rebuttals table]
 ```
+
+## Development Plan
+
+See [PLAN.md](./PLAN.md) for:
+- Skill development methodology (TDD for documentation)
+- Repository structure
+- Contribution workflow
 
 ## License
 
