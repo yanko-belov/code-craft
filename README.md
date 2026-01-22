@@ -90,6 +90,12 @@ Each skill was developed using **TDD for documentation**: baseline tests reveal 
 | [Race Conditions](./race-conditions/SKILL.md) | Data races, inconsistent state |
 | [Deadlock Prevention](./deadlock-prevention/SKILL.md) | System hangs, resource starvation |
 
+### Meta
+
+| Skill | Purpose |
+|-------|---------|
+| [Skill Awareness](./skill-awareness/SKILL.md) | Tracks skill usage across sessions, enables analytics |
+
 ## Installation
 
 ### Claude Code
@@ -160,8 +166,9 @@ Claude: *Creates exactly 3 endpoints in 30 lines*
 | **Code Quality** | 3 | Clean code patterns |
 | **Error Handling** | 2 | Exception management |
 | **Concurrency** | 2 | Thread-safe patterns |
+| **Meta** | 1 | Skill usage tracking |
 
-**Total: 31 skills**
+**Total: 32 skills**
 
 ## Contributing
 

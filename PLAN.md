@@ -4,7 +4,7 @@
 
 A collection of discipline-enforcing skills that help AI coding agents write better code by following software engineering best practices.
 
-## Completed Skills (31 total) ✅
+## Completed Skills (32 total) ✅
 
 ### SOLID Principles (5) ✅
 - [x] Single Responsibility Principle
@@ -55,9 +55,12 @@ A collection of discipline-enforcing skills that help AI coding agents write bet
 - [x] Race Conditions
 - [x] Deadlock Prevention
 
+### Meta (1) ✅
+- [x] Skill Awareness (usage tracking across sessions)
+
 ## All Skills Complete
 
-All planned skills have been implemented. The repository now contains 31 discipline-enforcing skills covering:
+All planned skills have been implemented. The repository now contains 32 discipline-enforcing skills covering:
 
 | Category | Count | Focus |
 |----------|-------|-------|
@@ -70,6 +73,7 @@ All planned skills have been implemented. The repository now contains 31 discipl
 | Code Quality | 3 | Clean code patterns |
 | Error Handling | 2 | Exception management |
 | Concurrency | 2 | Thread-safe patterns |
+| Meta | 1 | Skill usage tracking |
 
 ## Skill Structure (Template)
 
@@ -153,7 +157,9 @@ code-craft/
 ├── error-boundaries/SKILL.md
 │
 ├── race-conditions/SKILL.md
-└── deadlock-prevention/SKILL.md
+├── deadlock-prevention/SKILL.md
+│
+└── skill-awareness/SKILL.md
 ```
 
 ## Methodology
