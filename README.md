@@ -235,13 +235,6 @@ description: Use when [specific triggering conditions]
 [Excuses + rebuttals table]
 ```
 
-## Development Plan
-
-See [PLAN.md](./PLAN.md) for:
-- Skill development methodology (TDD for documentation)
-- Repository structure
-- Contribution workflow
-
 ## License
 
 MIT
