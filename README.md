@@ -12,114 +12,127 @@ Discipline-enforcing skills that help AI coding agents write better code by foll
 
 Each skill was developed using **TDD for documentation**: baseline tests reveal how Claude fails without the skill, then the skill is written to address those specific failures.
 
+## Installation
+
+```bash
+npx add-skill yanko-belov/code-craft
+```
+
+This installs skills to all supported agents (OpenCode, Claude Code, Codex, Cursor, etc.)
+
+### Options
+
+```bash
+# Install specific skills only
+npx add-skill yanko-belov/code-craft -s single-responsibility yagni fail-fast
+
+# Install globally (user-level)
+npx add-skill yanko-belov/code-craft -g
+
+# Install to specific agents
+npx add-skill yanko-belov/code-craft -a opencode claude-code
+
+# List available skills
+npx add-skill yanko-belov/code-craft -l
+
+# Install all skills to all agents without prompts
+npx add-skill yanko-belov/code-craft --all
+```
+
+### Manual Installation
+
+```bash
+# Clone and symlink
+git clone https://github.com/yanko-belov/code-craft.git
+cd code-craft
+for skill in skills/*/; do
+  ln -sf "$(pwd)/$skill" ~/.claude/skills/
+done
+```
+
 ## Skills
 
 ### SOLID Principles
 
 | Principle | Skill | Prevents |
 |-----------|-------|----------|
-| **S** | [Single Responsibility](./single-responsibility/SKILL.md) | God classes, "just add it here" |
-| **O** | [Open/Closed](./open-closed/SKILL.md) | Adding if/else branches for new features |
-| **L** | [Liskov Substitution](./liskov-substitution/SKILL.md) | Override with throw/no-op |
-| **I** | [Interface Segregation](./interface-segregation/SKILL.md) | Fat interfaces, forced implementations |
-| **D** | [Dependency Inversion](./dependency-inversion/SKILL.md) | `new Concrete()` inside classes |
+| **S** | [Single Responsibility](./skills/single-responsibility/SKILL.md) | God classes, "just add it here" |
+| **O** | [Open/Closed](./skills/open-closed/SKILL.md) | Adding if/else branches for new features |
+| **L** | [Liskov Substitution](./skills/liskov-substitution/SKILL.md) | Override with throw/no-op |
+| **I** | [Interface Segregation](./skills/interface-segregation/SKILL.md) | Fat interfaces, forced implementations |
+| **D** | [Dependency Inversion](./skills/dependency-inversion/SKILL.md) | `new Concrete()` inside classes |
 
 ### Core Principles
 
 | Principle | Skill | Prevents |
 |-----------|-------|----------|
-| **DRY** | [Don't Repeat Yourself](./dry/SKILL.md) | Copy-paste code, duplicated logic |
-| **YAGNI** | [You Ain't Gonna Need It](./yagni/SKILL.md) | Over-engineering, speculative features |
-| **KISS** | [Keep It Simple](./kiss/SKILL.md) | Clever one-liners, unnecessary complexity |
-| **Composition** | [Composition over Inheritance](./composition-over-inheritance/SKILL.md) | Deep inheritance hierarchies |
-| **Demeter** | [Law of Demeter](./law-of-demeter/SKILL.md) | `a.b.c.d` property chains |
-| **Fail Fast** | [Fail Fast](./fail-fast/SKILL.md) | Swallowed errors, silent failures |
+| **DRY** | [Don't Repeat Yourself](./skills/dry/SKILL.md) | Copy-paste code, duplicated logic |
+| **YAGNI** | [You Ain't Gonna Need It](./skills/yagni/SKILL.md) | Over-engineering, speculative features |
+| **KISS** | [Keep It Simple](./skills/kiss/SKILL.md) | Clever one-liners, unnecessary complexity |
+| **Composition** | [Composition over Inheritance](./skills/composition-over-inheritance/SKILL.md) | Deep inheritance hierarchies |
+| **Demeter** | [Law of Demeter](./skills/law-of-demeter/SKILL.md) | `a.b.c.d` property chains |
+| **Fail Fast** | [Fail Fast](./skills/fail-fast/SKILL.md) | Swallowed errors, silent failures |
 
 ### Testing
 
 | Skill | Prevents |
 |-------|----------|
-| [TDD](./tdd/SKILL.md) | Tests as afterthought, untestable code |
-| [Test Isolation](./test-isolation/SKILL.md) | Flaky tests, shared state between tests |
-| [AAA Pattern](./aaa-pattern/SKILL.md) | Messy tests, unclear test structure |
+| [TDD](./skills/tdd/SKILL.md) | Tests as afterthought, untestable code |
+| [Test Isolation](./skills/test-isolation/SKILL.md) | Flaky tests, shared state between tests |
+| [AAA Pattern](./skills/aaa-pattern/SKILL.md) | Messy tests, unclear test structure |
 
 ### Security
 
 | Skill | Prevents |
 |-------|----------|
-| [Input Validation](./input-validation/SKILL.md) | Injection attacks, invalid data |
-| [Secrets Handling](./secrets-handling/SKILL.md) | Hardcoded credentials, exposed secrets |
-| [Auth Patterns](./auth-patterns/SKILL.md) | Broken authentication, insecure sessions |
+| [Input Validation](./skills/input-validation/SKILL.md) | Injection attacks, invalid data |
+| [Secrets Handling](./skills/secrets-handling/SKILL.md) | Hardcoded credentials, exposed secrets |
+| [Auth Patterns](./skills/auth-patterns/SKILL.md) | Broken authentication, insecure sessions |
 
 ### API Design
 
 | Skill | Prevents |
 |-------|----------|
-| [REST Conventions](./rest-conventions/SKILL.md) | Inconsistent endpoints, poor API design |
-| [Error Responses](./error-responses/SKILL.md) | Unhelpful errors, leaked internals |
-| [Idempotency](./idempotency/SKILL.md) | Duplicate operations, unsafe retries |
-| [API Versioning](./api-versioning/SKILL.md) | Breaking changes, version chaos |
+| [REST Conventions](./skills/rest-conventions/SKILL.md) | Inconsistent endpoints, poor API design |
+| [Error Responses](./skills/error-responses/SKILL.md) | Unhelpful errors, leaked internals |
+| [Idempotency](./skills/idempotency/SKILL.md) | Duplicate operations, unsafe retries |
+| [API Versioning](./skills/api-versioning/SKILL.md) | Breaking changes, version chaos |
 
 ### Performance
 
 | Skill | Prevents |
 |-------|----------|
-| [N+1 Prevention](./n-plus-one-prevention/SKILL.md) | Database query explosions |
-| [Lazy Loading](./lazy-loading/SKILL.md) | Loading everything upfront, slow startup |
-| [Caching](./caching/SKILL.md) | Repeated expensive operations, cache bugs |
+| [N+1 Prevention](./skills/n-plus-one-prevention/SKILL.md) | Database query explosions |
+| [Lazy Loading](./skills/lazy-loading/SKILL.md) | Loading everything upfront, slow startup |
+| [Caching](./skills/caching/SKILL.md) | Repeated expensive operations, cache bugs |
 
 ### Code Quality
 
 | Skill | Prevents |
 |-------|----------|
-| [Separation of Concerns](./separation-of-concerns/SKILL.md) | Mixed responsibilities, tangled code |
-| [Encapsulation](./encapsulation/SKILL.md) | Exposed internals, broken abstractions |
-| [Immutability](./immutability/SKILL.md) | Mutation bugs, unexpected state changes |
+| [Separation of Concerns](./skills/separation-of-concerns/SKILL.md) | Mixed responsibilities, tangled code |
+| [Encapsulation](./skills/encapsulation/SKILL.md) | Exposed internals, broken abstractions |
+| [Immutability](./skills/immutability/SKILL.md) | Mutation bugs, unexpected state changes |
 
 ### Error Handling
 
 | Skill | Prevents |
 |-------|----------|
-| [Exception Hierarchies](./exception-hierarchies/SKILL.md) | Generic errors, poor error handling |
-| [Error Boundaries](./error-boundaries/SKILL.md) | Cascading failures, crashed UIs |
+| [Exception Hierarchies](./skills/exception-hierarchies/SKILL.md) | Generic errors, poor error handling |
+| [Error Boundaries](./skills/error-boundaries/SKILL.md) | Cascading failures, crashed UIs |
 
 ### Concurrency
 
 | Skill | Prevents |
 |-------|----------|
-| [Race Conditions](./race-conditions/SKILL.md) | Data races, inconsistent state |
-| [Deadlock Prevention](./deadlock-prevention/SKILL.md) | System hangs, resource starvation |
+| [Race Conditions](./skills/race-conditions/SKILL.md) | Data races, inconsistent state |
+| [Deadlock Prevention](./skills/deadlock-prevention/SKILL.md) | System hangs, resource starvation |
 
 ### Meta
 
 | Skill | Purpose |
 |-------|---------|
-| [Skill Awareness](./skill-awareness/SKILL.md) | Tracks skill usage across sessions, enables analytics |
-
-## Installation
-
-### Claude Code
-
-```bash
-# Clone the repo
-git clone https://github.com/yanko-belov/code-craft.git
-
-# Copy to skills directory
-cp -r code-craft/* ~/.claude/skills/
-
-# Or symlink for easier updates
-for skill in code-craft/*/; do
-  ln -s "$(pwd)/$skill" ~/.claude/skills/
-done
-```
-
-### Verify Installation
-
-```bash
-ls ~/.claude/skills/
-```
-
-Should show all skill directories.
+| [Skill Awareness](./skills/skill-awareness/SKILL.md) | Tracks skill usage across sessions, enables analytics |
 
 ## How Skills Work
 

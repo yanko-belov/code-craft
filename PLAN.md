@@ -119,47 +119,48 @@ code-craft/
 ├── LICENSE
 ├── PLAN.md (this file)
 │
-├── single-responsibility/SKILL.md
-├── open-closed/SKILL.md
-├── liskov-substitution/SKILL.md
-├── interface-segregation/SKILL.md
-├── dependency-inversion/SKILL.md
-│
-├── dry/SKILL.md
-├── yagni/SKILL.md
-├── kiss/SKILL.md
-├── composition-over-inheritance/SKILL.md
-├── law-of-demeter/SKILL.md
-├── fail-fast/SKILL.md
-│
-├── tdd/SKILL.md
-├── test-isolation/SKILL.md
-├── aaa-pattern/SKILL.md
-│
-├── input-validation/SKILL.md
-├── secrets-handling/SKILL.md
-├── auth-patterns/SKILL.md
-│
-├── rest-conventions/SKILL.md
-├── error-responses/SKILL.md
-├── idempotency/SKILL.md
-├── api-versioning/SKILL.md
-│
-├── n-plus-one-prevention/SKILL.md
-├── lazy-loading/SKILL.md
-├── caching/SKILL.md
-│
-├── separation-of-concerns/SKILL.md
-├── encapsulation/SKILL.md
-├── immutability/SKILL.md
-│
-├── exception-hierarchies/SKILL.md
-├── error-boundaries/SKILL.md
-│
-├── race-conditions/SKILL.md
-├── deadlock-prevention/SKILL.md
-│
-└── skill-awareness/SKILL.md
+└── skills/
+    ├── single-responsibility/SKILL.md
+    ├── open-closed/SKILL.md
+    ├── liskov-substitution/SKILL.md
+    ├── interface-segregation/SKILL.md
+    ├── dependency-inversion/SKILL.md
+    │
+    ├── dry/SKILL.md
+    ├── yagni/SKILL.md
+    ├── kiss/SKILL.md
+    ├── composition-over-inheritance/SKILL.md
+    ├── law-of-demeter/SKILL.md
+    ├── fail-fast/SKILL.md
+    │
+    ├── tdd/SKILL.md
+    ├── test-isolation/SKILL.md
+    ├── aaa-pattern/SKILL.md
+    │
+    ├── input-validation/SKILL.md
+    ├── secrets-handling/SKILL.md
+    ├── auth-patterns/SKILL.md
+    │
+    ├── rest-conventions/SKILL.md
+    ├── error-responses/SKILL.md
+    ├── idempotency/SKILL.md
+    ├── api-versioning/SKILL.md
+    │
+    ├── n-plus-one-prevention/SKILL.md
+    ├── lazy-loading/SKILL.md
+    ├── caching/SKILL.md
+    │
+    ├── separation-of-concerns/SKILL.md
+    ├── encapsulation/SKILL.md
+    ├── immutability/SKILL.md
+    │
+    ├── exception-hierarchies/SKILL.md
+    ├── error-boundaries/SKILL.md
+    │
+    ├── race-conditions/SKILL.md
+    ├── deadlock-prevention/SKILL.md
+    │
+    └── skill-awareness/SKILL.md
 ```
 
 ## Methodology
@@ -183,17 +184,16 @@ Potential additional skill categories to explore:
 ## Installation
 
 ```bash
-# Clone the repo
+# Recommended: use add-skill CLI
+npx add-skill yanko-belov/code-craft
+
+# Or install specific skills
+npx add-skill yanko-belov/code-craft -s single-responsibility yagni fail-fast
+
+# Manual: clone and symlink
 git clone https://github.com/yanko-belov/code-craft.git
-
-# Copy to skills directory
-cp -r code-craft/*/ ~/.claude/skills/
-
-# Or symlink for easier updates
 cd code-craft
-for skill in */; do
-  if [ -f "$skill/SKILL.md" ]; then
-    ln -sf "$(pwd)/$skill" ~/.claude/skills/
-  fi
+for skill in skills/*/; do
+  ln -sf "$(pwd)/$skill" ~/.claude/skills/
 done
 ```
