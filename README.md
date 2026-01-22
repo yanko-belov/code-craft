@@ -39,6 +39,16 @@ npx add-skill yanko-belov/code-craft -l
 npx add-skill yanko-belov/code-craft --all
 ```
 
+### Supported Agents
+
+- OpenCode
+- Claude Code
+- Codex
+- Cursor
+- Antigravity
+- GitHub Copilot
+- Roo Code
+
 ### Manual Installation
 
 ```bash
