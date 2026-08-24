@@ -1,3 +1,5 @@
+
+
 # Code Craft
 
 Discipline-enforcing skills that help AI coding agents write better code by following software engineering best practices.
@@ -52,7 +54,7 @@ npx add-skill yanko-belov/code-craft --all
 ### Manual Installation
 
 ```bash
-# Clone and symlink
+# Clone and symlink for Claude Code
 git clone https://github.com/yanko-belov/code-craft.git
 cd code-craft
 for skill in skills/*/; do
